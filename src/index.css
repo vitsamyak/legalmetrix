@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6366F1;
+  --color-primary-dark: #4F46E5;
+  --color-secondary: #3DD6B4;
+  --color-accent: #5DD9FF;
+  --color-cyan: #5DD9FF;
+  --color-warning: #F5B942;
+  --color-danger: #FF6B6B;
+  
+  --color-obsidian: #030712; /* Deep charcoal / near black base */
+  --color-surface-secondary: rgba(255, 255, 255, 0.05);
+  --color-surface-elevated: rgba(255, 255, 255, 0.08);
+  --color-surface-light: rgba(255, 255, 255, 0.03);
+  --color-input: rgba(255, 255, 255, 0.05);
+  --color-sidebar: rgba(255, 255, 255, 0.02);
+  
+  --color-content: #F8FAFC;
+  --color-content-muted: #94A3B8;
+  --color-content-faint: #64748B;
+  --color-border: rgba(255, 255, 255, 0.1);
+
+  --font-heading: "Inter", system-ui, sans-serif;
+  --font-h1: "Inter", system-ui, sans-serif;
+  --font-h23: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  *, ::before, ::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply bg-obsidian text-content font-body antialiased;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h1 {
+    font-family: var(--font-h1);
+    color: var(--color-content);
+    animation: fontFadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  h2, h3 {
+    font-family: var(--font-h23);
+    color: var(--color-content);
+    animation: fontFadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  h4, h5, h6 {
+    font-family: var(--font-body);
+    color: var(--color-content);
+    animation: fontFadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+  /* Staggered animation for headings */
+  h1 { animation-delay: 0.1s; }
+  h2 { animation-delay: 0.2s; }
+  h3 { animation-delay: 0.3s; }
+  h4 { animation-delay: 0.4s; }
+  h5 { animation-delay: 0.5s; }
+  h6 { animation-delay: 0.6s; }
+
+  p, span, a, li, label {
+    animation: textFadeIn 0.8s ease-in-out forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+  }
+}
+
+@keyframes fontFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Scrollbar styles for a premium look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Global Scroll Reveal */
+.scroll-reveal-element {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-element.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* React Bits Component Animations */
+@keyframes shine {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+.animate-shine {
+  animation: shine 3s infinite linear;
+}
+
+@keyframes star-movement-bottom {
+  0% { transform: translate(0%, 0%); opacity: 1; }
+  100% { transform: translate(-100%, 0%); opacity: 0; }
+}
+.animate-star-movement-bottom {
+  animation: star-movement-bottom 6s linear infinite;
+}
+
+@keyframes star-movement-top {
+  0% { transform: translate(0%, 0%); opacity: 1; }
+  100% { transform: translate(100%, 0%); opacity: 0; }
+}
+.animate-star-movement-top {
+  animation: star-movement-top 6s linear infinite;
+}
+
+@keyframes swing {
+  20% { transform: rotate(15deg); }
+  40% { transform: rotate(-10deg); }
+  60% { transform: rotate(5deg); }
+  80% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+.animate-swing {
+  animation: swing 0.8s ease-out;
+}
