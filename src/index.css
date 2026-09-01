@@ -48,13 +48,13 @@
     max-width: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   #root {
     width: 100%;
     max-width: 100%;
-    min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
   }
@@ -109,7 +109,6 @@
   opacity: 0;
   transform: translateY(30px) scale(0.98);
   transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
 }
 
 .scroll-reveal-element.is-revealed {

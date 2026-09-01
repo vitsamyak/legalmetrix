@@ -114,16 +114,16 @@ export const HomePage: React.FC = () => {
       {/* ============================================================ */}
       <section
         id="hero"
-        className="relative w-full min-h-[92vh] flex flex-col items-center justify-center pt-32 pb-20 px-4 sm:px-6 overflow-hidden bg-[#0B1020]"
+        className="relative w-full min-h-[100svh] flex flex-col items-center justify-center pt-32 pb-20 px-4 sm:px-6 overflow-hidden bg-[#0B1020]"
         style={{
           background: 'radial-gradient(circle at 50% 20%, rgba(99,102,241,0.15) 0%, rgba(11,16,32,0) 65%), #0B1020',
         }}
       >
         {/* Full-width Ambient Glow Elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] max-w-[95vw] h-[500px] rounded-full bg-primary/15 blur-[160px] pointer-events-none" />
-          <div className="absolute top-1/3 left-1/6 w-[450px] max-w-[45vw] h-[450px] rounded-full bg-secondary/10 blur-[150px] pointer-events-none" />
-          <div className="absolute top-1/2 right-1/6 w-[450px] max-w-[45vw] h-[450px] rounded-full bg-accent/10 blur-[150px] pointer-events-none" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] max-w-[95vw] h-[500px] rounded-full bg-primary/15 blur-3xl sm:blur-[160px] pointer-events-none" />
+          <div className="absolute top-1/3 left-1/6 w-[450px] max-w-[45vw] h-[450px] rounded-full bg-secondary/10 blur-3xl sm:blur-[150px] pointer-events-none hidden sm:block" />
+          <div className="absolute top-1/2 right-1/6 w-[450px] max-w-[45vw] h-[450px] rounded-full bg-accent/10 blur-3xl sm:blur-[150px] pointer-events-none hidden sm:block" />
         </div>
 
         {/* Centered Content Container */}
@@ -655,6 +655,7 @@ export const HomePage: React.FC = () => {
                     src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=700&q=80"
                     alt="Evidence Label"
                     className="w-full h-48 sm:h-72 object-cover opacity-80"
+                    loading="lazy"
                   />
 
                   {/* Dynamic highlighted bounding box */}
@@ -1038,6 +1039,7 @@ export const HomePage: React.FC = () => {
                         src={member.avatar}
                         alt={member.name}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        loading="lazy"
                       />
                     ) : (
                       <span className="group-hover:scale-110 transition-transform duration-300 font-mono">

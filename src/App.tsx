@@ -50,17 +50,19 @@ function App() {
           <ScrollRevealWrapper />
           <ScrollToTop />
           <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 0, pointerEvents: 'none' }}>
-            <LightRays
-              raysOrigin="top-center"
-              raysColor="#6366F1"
-              raysSpeed={1.5}
-              lightSpread={0.8}
-              rayLength={1.2}
-              followMouse={true}
-              mouseInfluence={0.1}
-              noiseAmount={0.1}
-              distortion={0.05}
-            />
+            {typeof window !== 'undefined' && window.innerWidth >= 768 && (
+              <LightRays
+                raysOrigin="top-center"
+                raysColor="#6366F1"
+                raysSpeed={1.5}
+                lightSpread={0.8}
+                rayLength={1.2}
+                followMouse={true}
+                mouseInfluence={0.1}
+                noiseAmount={0.1}
+                distortion={0.05}
+              />
+            )}
           </div>
           <Suspense fallback={<BrandedLoader fullScreen={true} message="LegalMetrix AI" subMessage="Loading application modules..." />}>
             <div style={{ position: 'relative', zIndex: 1, width: '100%', minHeight: '100vh' }}>
