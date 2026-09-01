@@ -84,7 +84,7 @@ export const ChatbotWidget = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="mb-4 w-[350px] sm:w-[400px] h-[500px] max-h-[80vh] bg-obsidian/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden isolate ring-1 ring-white/5"
+            className="mb-4 w-[calc(100vw-32px)] sm:w-[400px] max-w-full h-[500px] max-h-[80vh] bg-obsidian/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden isolate ring-1 ring-white/5"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-white/10 bg-white/5">

@@ -149,7 +149,7 @@ export const HomePage: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="space-y-6 w-full flex flex-col items-center"
           >
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-extrabold tracking-tight text-white leading-[1.05] max-w-full break-words flex flex-col items-center">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold tracking-tight text-white leading-[1.05] max-w-full break-words flex flex-col items-center">
               <BlurText
                 text="The Smart Assistant for Legal Metrology"
                 delay={80}

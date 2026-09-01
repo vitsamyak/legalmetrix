@@ -176,7 +176,7 @@ export const AnalyticsPage = () => {
         </Card>
       </div>
 
-      <Card>
+      <Card className="w-full min-w-0">
         <CardHeader>
           <CardTitle>Inspection Trends</CardTitle>
         </CardHeader>

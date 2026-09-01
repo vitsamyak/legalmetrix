@@ -245,7 +245,7 @@ export const InspectorDashboard = () => {
 
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="lg:col-span-2">
+        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="lg:col-span-2 min-w-0">
           <Card className="h-full">
             <CardHeader>
               <CardTitle>Inspection Activity</CardTitle>
@@ -276,7 +276,7 @@ export const InspectorDashboard = () => {
           </Card>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}>
+        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }} className="min-w-0">
           <Card className="h-full">
             <CardHeader>
               <CardTitle>Violation Breakdown</CardTitle>
