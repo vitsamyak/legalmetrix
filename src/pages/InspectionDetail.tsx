@@ -173,7 +173,7 @@ export const InspectionDetail = () => {
 
           {/* New Evidence Section */}
           <Card>
-            <CardHeader className="py-4 border-b border-border flex justify-between items-center">
+            <CardHeader className="py-4 border-b border-border flex flex-col sm:flex-row justify-between sm:items-center gap-2">
               <CardTitle className="text-base flex items-center">
                 <ImageIcon className="w-4 h-4 mr-2" /> Evidence Collected ({evidenceList.length})
               </CardTitle>
@@ -186,7 +186,7 @@ export const InspectionDetail = () => {
               ) : (
                 <div className="divide-y divide-border">
                   {evidenceList.map((ev) => (
-                    <div key={ev.id} className="p-4 flex items-center justify-between hover:bg-obsidian transition-colors">
+                    <div key={ev.id} className="p-4 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-obsidian transition-colors gap-2">
                       <div className="flex items-center space-x-4">
                         <div className="w-12 h-12 rounded bg-primary/10 flex items-center justify-center border border-primary/20">
                           <ImageIcon className="w-5 h-5 text-primary" />

@@ -524,10 +524,10 @@ export const HomePage: React.FC = () => {
             </div>
 
             <div className="lg:col-span-6 space-y-4">
-              <div className="bg-[#121A2E] border border-white/10 rounded-2xl p-6 space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-white/10">
+              <div className="bg-[#121A2E] border border-white/10 rounded-2xl p-4 sm:p-6 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-white/10 gap-2">
                   <span className="text-base font-heading font-bold text-white">Mapped Mandatory Declarations</span>
-                  <span className="text-sm font-mono text-emerald-400">7 Core Declarations</span>
+                  <span className="text-sm font-mono text-emerald-400 self-start sm:self-auto">7 Core Declarations</span>
                 </div>
 
                 <div className="space-y-2.5 text-sm">
@@ -542,9 +542,9 @@ export const HomePage: React.FC = () => {
                   ].map((item, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center justify-between p-3 rounded-lg bg-white/[0.02] border border-white/5"
+                      className="flex items-center justify-between p-3 rounded-lg bg-white/[0.02] border border-white/5 min-w-0 gap-2"
                     >
-                      <span className="text-slate-300 truncate max-w-[70%]">{item.field}</span>
+                      <span className="text-slate-300 truncate min-w-0">{item.field}</span>
                       <Badge variant="primary" className="font-mono text-xs">
                         {item.rule}
                       </Badge>
@@ -576,7 +576,7 @@ export const HomePage: React.FC = () => {
           </div>
 
           {/* 8-Stage Pipeline Flow */}
-          <div className="bg-[#121A2E]/60 border border-white/10 rounded-2xl p-8 mb-12">
+          <div className="bg-[#121A2E]/60 border border-white/10 rounded-2xl p-4 sm:p-8 mb-12">
             <div className="text-sm font-mono uppercase text-slate-400 tracking-wider mb-6 text-center">
               Linear Evidence Processing Pipeline
             </div>
