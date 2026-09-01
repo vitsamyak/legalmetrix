@@ -41,7 +41,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Sanshrey Sanagar',
     role: 'Backend Developer',
     bio: 'Architecting high-concurrency cloud pipelines, evidence audit trails, and data persistence layers.',
-    avatar: '/images/team/sanshrey.HEIC',
+    avatar: '/images/team/sanshrey.jpg',
     initials: 'SS',
     linkedin: 'https://www.linkedin.com/in/sanshreysanagar/',
     github: 'https://github.com/sanshrey7273-eng',
