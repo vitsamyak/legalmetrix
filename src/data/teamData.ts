@@ -74,6 +74,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     avatar: '/images/team/sanay.jpeg',
     initials: 'SS',
     linkedin: 'https://www.linkedin.com/in/sanay-surana-a33625387?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-    github: 'https://github.com',
+    github: 'https://github.com/yanzay7',
   },
 ];
