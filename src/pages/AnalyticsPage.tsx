@@ -181,8 +181,8 @@ export const AnalyticsPage = () => {
           <CardTitle>Inspection Trends</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="h-[400px] w-full overflow-x-auto overflow-y-hidden custom-scrollbar">
-            <div className="min-w-[600px] h-full">
+          <div className="h-[400px] w-full">
+            <div className="w-full h-full">
               {loading ? (
                 <SkeletonLoader className="w-full h-full rounded-xl bg-white/5" />
               ) : trendData.length === 0 ? (

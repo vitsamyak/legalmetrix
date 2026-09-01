@@ -6,8 +6,8 @@ export const Footer: React.FC = () => {
   return (
     <footer id="contact" className="w-full bg-[#090D1A] border-t border-white/[0.08] text-slate-400 relative">
       {/* Upper Footer: Contact bar & Brand Statement */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 pb-12 border-b border-white/10">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-24 lg:pb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 pb-12 border-b border-white/10">
           {/* Brand & Description (2 cols on lg) */}
           <div className="lg:col-span-2 space-y-4">
             <Link

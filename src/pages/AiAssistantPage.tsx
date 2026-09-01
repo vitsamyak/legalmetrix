@@ -175,7 +175,7 @@ export const AiAssistantPage = () => {
       {/* Sidebar - History */}
       <div 
         className={cn(
-          "bg-obsidian/60 border-r border-white/10 flex flex-col transition-all duration-300 absolute md:relative z-20 h-full",
+          "bg-[#0B1020]/95 backdrop-blur-xl md:bg-obsidian/60 border-r border-white/10 flex flex-col transition-all duration-300 absolute md:relative z-20 h-full",
           isSidebarOpen ? "w-[280px] translate-x-0" : "w-[280px] -translate-x-full md:translate-x-0 md:w-0 md:border-none md:opacity-0"
         )}
       >
