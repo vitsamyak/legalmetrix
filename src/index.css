@@ -59,42 +59,16 @@
     flex-direction: column;
   }
   
-  h1 {
-    font-family: var(--font-h1);
+  h1, h2, h3, h4, h5, h6 {
     color: var(--color-content);
-    animation: fontFadeInUp 0.8s ease-out forwards;
-    opacity: 0;
   }
-
-  h2, h3 {
-    font-family: var(--font-h23);
-    color: var(--color-content);
-    animation: fontFadeInUp 0.8s ease-out forwards;
-    opacity: 0;
-  }
-
-  h4, h5, h6 {
-    font-family: var(--font-body);
-    color: var(--color-content);
-    animation: fontFadeInUp 0.8s ease-out forwards;
-    opacity: 0;
-  }
+  
+  h1 { font-family: var(--font-h1); }
+  h2, h3 { font-family: var(--font-h23); }
+  h4, h5, h6 { font-family: var(--font-body); }
   
   code, pre, .font-mono {
     font-family: var(--font-mono);
-  }
-  /* Staggered animation for headings */
-  h1 { animation-delay: 0.1s; }
-  h2 { animation-delay: 0.2s; }
-  h3 { animation-delay: 0.3s; }
-  h4 { animation-delay: 0.4s; }
-  h5 { animation-delay: 0.5s; }
-  h6 { animation-delay: 0.6s; }
-
-  p, span, a, li, label {
-    animation: textFadeIn 0.8s ease-in-out forwards;
-    animation-delay: 0.3s;
-    opacity: 0;
   }
 }
 

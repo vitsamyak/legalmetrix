@@ -44,6 +44,13 @@ const getStatusBadge = (status: string) => {
   }
 };
 
+const getGreeting = () => {
+  const hour = new Date().getHours();
+  if (hour < 12) return 'Good morning';
+  if (hour < 17) return 'Good afternoon';
+  return 'Good evening';
+};
+
 const getScoreColor = (score: number | null | undefined) => {
   if (score === null || score === undefined) return 'text-content-muted';
   if (score >= 90) return 'text-emerald-600';
@@ -178,7 +185,7 @@ export const InspectorDashboard = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8">
         <div>
           <BlurText 
-            text={`Good morning, ${user.name}`} 
+            text={`${getGreeting()}, ${user.name}`} 
             delay={50} 
             className="text-2xl font-bold font-heading text-content tracking-tight mb-2" 
           />
@@ -244,24 +251,26 @@ export const InspectorDashboard = () => {
               <CardTitle>Inspection Activity</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="h-[300px] w-full">
-                {loading ? (
-                  <SkeletonLoader className="w-full h-full rounded-xl bg-white/5" />
-                ) : (
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={inspectionActivity} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
-                      <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748B', fontSize: 12 }} dy={10} />
-                      <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748B', fontSize: 12 }} />
-                      <Tooltip 
-                        cursor={{ fill: 'rgba(255,255,255,0.02)' }}
-                        contentStyle={{ backgroundColor: '#090C15', borderColor: 'rgba(255,255,255,0.1)', color: '#F8FAFC', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
-                      />
-                      <Bar dataKey="passes" name="Compliant" fill="#3DD6B4" radius={[4, 4, 0, 0]} maxBarSize={40} />
-                      <Bar dataKey="fails" name="Violations" fill="#FF6B6B" radius={[4, 4, 0, 0]} maxBarSize={40} />
-                    </BarChart>
-                  </ResponsiveContainer>
-                )}
+              <div className="h-[300px] w-full overflow-x-auto overflow-y-hidden custom-scrollbar">
+                <div className="min-w-[500px] h-full">
+                  {loading ? (
+                    <SkeletonLoader className="w-full h-full rounded-xl bg-white/5" />
+                  ) : (
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={inspectionActivity} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
+                        <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748B', fontSize: 12 }} dy={10} />
+                        <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748B', fontSize: 12 }} />
+                        <Tooltip 
+                          cursor={{ fill: 'rgba(255,255,255,0.02)' }}
+                          contentStyle={{ backgroundColor: '#090C15', borderColor: 'rgba(255,255,255,0.1)', color: '#F8FAFC', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
+                        />
+                        <Bar dataKey="passes" name="Compliant" fill="#3DD6B4" radius={[4, 4, 0, 0]} maxBarSize={40} />
+                        <Bar dataKey="fails" name="Violations" fill="#FF6B6B" radius={[4, 4, 0, 0]} maxBarSize={40} />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  )}
+                </div>
               </div>
             </CardContent>
           </Card>

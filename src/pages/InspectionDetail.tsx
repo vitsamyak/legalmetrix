@@ -107,12 +107,12 @@ export const InspectionDetail = () => {
             </p>
           </div>
         </div>
-        <div className="flex space-x-3">
-          <Link to={`/evidence/${inspection.id}`}>
-            <Button variant="secondary" leftIcon={<Search className="w-4 h-4" />}>Review Evidence</Button>
+        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto mt-4 md:mt-0">
+          <Link to={`/evidence/${inspection.id}`} className="w-full sm:w-auto">
+            <Button variant="secondary" leftIcon={<Search className="w-4 h-4" />} className="w-full justify-center">Review Evidence</Button>
           </Link>
-          <Link to={`/reports/${inspection.id}`}>
-            <Button variant="primary" leftIcon={<FileText className="w-4 h-4" />}>View Report</Button>
+          <Link to={`/reports/${inspection.id}`} className="w-full sm:w-auto">
+            <Button variant="primary" leftIcon={<FileText className="w-4 h-4" />} className="w-full justify-center">View Report</Button>
           </Link>
         </div>
       </div>
@@ -124,7 +124,7 @@ export const InspectionDetail = () => {
               <CardTitle className="text-base">Compliance Summary</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
                 <div>
                   <div className="text-content-faint text-sm uppercase mb-1">Overall Score</div>
                   <div className={`text-4xl font-heading font-bold ${
@@ -141,7 +141,7 @@ export const InspectionDetail = () => {
                       : '--'}<span className="text-2xl text-content-muted">/100</span>
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right">
                   <div className="text-content-faint text-sm uppercase mb-1">Status</div>
                   <div className={`font-medium ${violations.length > 0 ? 'text-danger' : inspection.status === 'Needs Review' ? 'text-warning' : 'text-secondary'}`}>
                     {violations.length > 0 ? `${violations.length} Violation(s) Detected` : inspection.status === 'Needs Review' ? 'Review Required' : 'No Violations Detected'}
@@ -158,12 +158,12 @@ export const InspectionDetail = () => {
                   </div>
                 ) : (
                   violations.map((viol) => (
-                    <div key={viol.id} className="p-4 flex items-start justify-between border-b border-border bg-danger/5">
+                    <div key={viol.id} className="p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-border bg-danger/5 gap-3">
                       <div>
                         <h4 className="font-bold text-danger">{viol.title}</h4>
                         <p className="text-sm text-content-muted mt-1">{viol.ai_analysis || 'Manual violation flagged'}</p>
                       </div>
-                      <Badge variant="danger">{viol.verification_status || 'Pending Review'}</Badge>
+                      <Badge variant="danger" className="whitespace-nowrap">{viol.verification_status || 'Pending Review'}</Badge>
                     </div>
                   ))
                 )}

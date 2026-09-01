@@ -19,7 +19,8 @@ import {
   Search,
   Bell,
   Check,
-  ArrowRight
+  ArrowRight,
+  MessageSquare
 } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { useAuth } from '../context/AuthContext';
@@ -37,6 +38,7 @@ interface NavMenuItem {
 
 const mainMenu: NavMenuItem[] = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard', exact: true },
+  { icon: MessageSquare, label: 'AI Assistant', path: '/dashboard/assistant' },
   { icon: ScanLine, label: 'New Inspection', path: '/new-inspection' },
   { icon: History, label: 'Inspections', path: '/inspections' },
   { icon: Package, label: 'Products', path: '/products' },
@@ -56,10 +58,26 @@ const systemMenu: NavMenuItem[] = [
 ];
 
 export const DashboardLayout = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(() => window.innerWidth >= 1024);
   const [showNotifications, setShowNotifications] = useState(false);
   const notificationsRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsSidebarOpen(true);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) {
+      setIsSidebarOpen(false);
+    }
+  }, [location.pathname]);
   const navigate = useNavigate();
   const { user, logout } = useAuth();
 
@@ -154,6 +172,19 @@ export const DashboardLayout = () => {
 
   return (
     <div className="h-screen w-full flex overflow-hidden bg-transparent">
+      {/* Sidebar Overlay (Mobile) */}
+      <AnimatePresence>
+        {isSidebarOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsSidebarOpen(false)}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+          />
+        )}
+      </AnimatePresence>
+
       {/* Sidebar */}
       <AnimatePresence initial={false}>
         {isSidebarOpen && (
@@ -162,7 +193,7 @@ export const DashboardLayout = () => {
             animate={{ width: 280, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
-            className="bg-obsidian/40 backdrop-blur-2xl border-r border-white/10 text-content flex-shrink-0 z-30 flex flex-col shadow-[10px_0_30px_rgba(0,0,0,0.2)] relative"
+            className="fixed inset-y-0 left-0 z-50 lg:relative lg:flex-shrink-0 bg-[#0B1020]/95 lg:bg-obsidian/40 backdrop-blur-2xl border-r border-white/10 text-content flex flex-col shadow-[10px_0_30px_rgba(0,0,0,0.5)] lg:shadow-[10px_0_30px_rgba(0,0,0,0.2)]"
           >
             
             <Link 
@@ -172,8 +203,8 @@ export const DashboardLayout = () => {
               title="LegalMetrix AI - Return to Hero"
               aria-label="LegalMetrix AI - Return to Hero page"
             >
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center mr-3 shadow-[0_0_15px_rgba(99,102,241,0.4)] border border-primary/20">
-                <ScanLine className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center mr-3 shadow-[0_0_15px_rgba(99,102,241,0.4)] border border-primary/20 overflow-hidden">
+                <Scale className="w-5 h-5 text-white" />
               </div>
               <ShinyText text="LegalMetrix" speed={3} /> <span className="text-primary ml-1 drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]">AI</span>
             </Link>
@@ -222,12 +253,12 @@ export const DashboardLayout = () => {
       </AnimatePresence>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-w-0 relative z-10">
-        <header className="h-20 bg-obsidian/30 backdrop-blur-2xl border-b border-white/10 flex items-center px-8 justify-between flex-shrink-0 z-20 sticky top-0 shadow-[0_4px_30px_rgba(0,0,0,0.1)] gap-6">
-          <div className="flex items-center space-x-3 min-w-max">
+      <div className="flex-1 flex flex-col min-w-0 relative z-10 w-full overflow-hidden">
+        <header className="h-16 lg:h-20 bg-obsidian/30 backdrop-blur-2xl border-b border-white/10 flex items-center px-4 lg:px-8 justify-between flex-shrink-0 z-20 sticky top-0 shadow-[0_4px_30px_rgba(0,0,0,0.1)] gap-2 lg:gap-6">
+          <div className="flex items-center space-x-2 lg:space-x-3 min-w-max">
             <button 
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              className="p-2.5 rounded-xl text-white/60 hover:bg-white/10 hover:text-white transition-all cursor-pointer border border-transparent hover:border-white/10"
+              className="p-2 lg:p-2.5 rounded-xl text-white/60 hover:bg-white/10 hover:text-white transition-all cursor-pointer border border-transparent hover:border-white/10"
               title="Toggle navigation"
             >
               <Menu className="w-5 h-5" />
@@ -255,16 +286,16 @@ export const DashboardLayout = () => {
           </div>
 
           {/* Premium Search Bar */}
-          <div className="flex-1 max-w-xl mx-auto hidden lg:block">
+          <div className="flex-1 max-w-xl mx-auto hidden md:block">
             <SpotlightCard className="rounded-xl bg-white/[0.02] border-white/5 hover:border-primary/30 transition-colors p-[1px]">
-              <div className="relative flex items-center w-full h-10 px-3 bg-[#0B1020]/90 rounded-xl overflow-hidden shadow-inner">
+              <div className="relative flex items-center w-full h-9 lg:h-10 px-3 bg-[#0B1020]/90 rounded-xl overflow-hidden shadow-inner">
                 <Search className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0" />
                 <input 
                   type="text" 
-                  placeholder="Search inspections, regulations, or evidence..." 
+                  placeholder="Search inspections..." 
                   className="w-full bg-transparent border-none text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-0" 
                 />
-                <div className="flex items-center space-x-1 ml-2 flex-shrink-0">
+                <div className="hidden lg:flex items-center space-x-1 ml-2 flex-shrink-0">
                   <kbd className="px-1.5 py-0.5 text-[10px] bg-white/10 rounded text-slate-400 font-mono shadow-sm">⌘</kbd>
                   <kbd className="px-1.5 py-0.5 text-[10px] bg-white/10 rounded text-slate-400 font-mono shadow-sm">K</kbd>
                 </div>
@@ -272,7 +303,7 @@ export const DashboardLayout = () => {
             </SpotlightCard>
           </div>
           
-          <div className="flex items-center space-x-5 min-w-max">
+          <div className="flex items-center space-x-2 lg:space-x-5 min-w-max">
             {/* Notification Bell */}
             <div className="relative" ref={notificationsRef}>
               <button 
@@ -377,7 +408,7 @@ export const DashboardLayout = () => {
           </div>
         </header>
         
-        <main className="flex-1 overflow-y-auto p-6 lg:p-10 relative">
+        <main className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 lg:p-10 relative">
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}

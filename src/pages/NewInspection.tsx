@@ -309,10 +309,11 @@ export const NewInspection = () => {
             }`}>
               {idx < currentStep ? <CheckCircle2 className="w-5 h-5" /> : idx + 1}
             </div>
-            <div className={`absolute top-10 text-xs font-medium w-24 text-center ${
+            <div className={`absolute top-10 text-[10px] sm:text-xs font-medium w-16 sm:w-24 text-center leading-tight ${
               idx <= currentStep ? 'text-content' : 'text-content-faint'
             }`}>
-              {step}
+              <span className="hidden sm:inline">{step}</span>
+              <span className="sm:hidden">{step.split(' ')[0]}</span>
             </div>
           </div>
         ))}
@@ -325,7 +326,7 @@ export const NewInspection = () => {
               <CardTitle>1. Inspection Information</CardTitle>
             </CardHeader>
             <CardContent className="p-6 space-y-4">
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-content-muted">Inspector Name</label>
                   <input type="text" className="w-full px-4 py-2 bg-[#0F172A]/40 backdrop-blur-md border border-white/10 hover:bg-white/5 hover:border-white/20 transition-all duration-300 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] focus:bg-white/10 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 rounded-xl text-content outline-none" defaultValue={user.name} key={`name-${user.name}`} />
@@ -357,7 +358,7 @@ export const NewInspection = () => {
               <CardTitle>2. Product Details</CardTitle>
             </CardHeader>
             <CardContent className="p-6 space-y-4">
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-content-muted">Product Name *</label>
                   <input type="text" className="w-full px-4 py-2 bg-[#0F172A]/40 backdrop-blur-md border border-white/10 hover:bg-white/5 hover:border-white/20 transition-all duration-300 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] focus:bg-white/10 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 rounded-xl text-content outline-none" placeholder="e.g. Ashirvaad Whole Wheat Atta 5kg" value={productName} onChange={(e) => setProductName(e.target.value)} required />

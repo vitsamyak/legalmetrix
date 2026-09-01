@@ -27,11 +27,11 @@ export const Footer: React.FC = () => {
             <div className="pt-2 space-y-2 text-xs text-slate-400">
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
-                <span>New Delhi, India • Specialized Compliance Technology</span>
+                <span>Pune, Maharashtra • Specialized Compliance Technology</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
-                <span>contact@legalmetrix.ai</span>
+                <span>samyak.1251070043@vit.edu</span>
               </div>
             </div>
           </div>

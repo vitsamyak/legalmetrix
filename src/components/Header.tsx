@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ScanLine, Menu, X, ArrowRight, LayoutDashboard, User, LogOut } from 'lucide-react';
+import { Scale,  ScanLine, Menu, X, ArrowRight, LayoutDashboard, User, LogOut  } from "lucide-react";
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/Button';
 import { useAuth } from '../context/AuthContext';
@@ -120,7 +120,7 @@ export const Header: React.FC = () => {
             title="LegalMetrix AI - Return to Hero"
             aria-label="LegalMetrix AI - Return to Hero page"
           >
-            <ScanLine className="w-8 h-8 text-primary mr-2.5 flex-shrink-0" />
+            <Scale className="w-8 h-8 text-primary mr-2.5 flex-shrink-0" />
             <span>
               LegalMetrix <span className="text-primary ml-0.5">AI</span>
             </span>

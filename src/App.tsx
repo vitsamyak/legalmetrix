@@ -8,6 +8,7 @@ import { DashboardLayout } from './layouts/DashboardLayout';
 import { BrandedLoader } from './components/BrandedLoader';
 import ScrollToTop from './components/ScrollToTop';
 import LightRays from './components/LightRays';
+import { ChatbotWidget } from './components/ChatbotWidget';
 
 // Lazy loaded pages
 const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
@@ -32,6 +33,7 @@ const ProfilePage = lazy(() => import('./pages/ProfilePage').then(m => ({ defaul
 const EvidenceReview = lazy(() => import('./pages/EvidenceReview').then(m => ({ default: m.EvidenceReview })));
 const InspectionDetail = lazy(() => import('./pages/InspectionDetail').then(m => ({ default: m.InspectionDetail })));
 const NotificationsPage = lazy(() => import('./pages/NotificationsPage').then(m => ({ default: m.NotificationsPage })));
+const AiAssistantPage = lazy(() => import('./pages/AiAssistantPage').then(m => ({ default: m.AiAssistantPage })));
 
 import { useScrollReveal } from './hooks/useScrollReveal';
 
@@ -99,6 +101,7 @@ function App() {
                 <Route path="/settings" element={<SettingsPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/notifications" element={<NotificationsPage />} />
+                <Route path="/dashboard/assistant" element={<AiAssistantPage />} />
 
                 {/* Sub-routes under /dashboard for full backwards compatibility */}
                 <Route path="/dashboard/inspect" element={<NewInspection />} />
@@ -123,6 +126,7 @@ function App() {
               </Routes>
             </div>
           </Suspense>
+          <ChatbotWidget />
         </Router>
       </ToastProvider>
     </AuthProvider>

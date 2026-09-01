@@ -345,7 +345,7 @@ export const EvidenceReview = () => {
                   <div className="space-y-6">
                     {violations.map(violation => (
                       <div key={violation.id} className="space-y-4 border-b border-border pb-6 last:border-0">
-                        <div className="flex justify-between items-start">
+                        <div className="flex flex-col sm:flex-row sm:justify-between items-start gap-3">
                           <div>
                             <h3 className="text-lg font-bold text-danger">{violation.title}</h3>
                             <p className="text-sm text-content-muted mt-1">{violation.description}</p>

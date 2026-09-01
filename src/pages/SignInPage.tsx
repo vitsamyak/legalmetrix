@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { ScanLine, Lock, Mail, ArrowRight, ShieldCheck, Eye, EyeOff, CheckCircle2 } from 'lucide-react';
+import { Scale,  ScanLine, Lock, Mail, ArrowRight, ShieldCheck, Eye, EyeOff, CheckCircle2  } from "lucide-react";
 import { Button } from '../components/ui/Button';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../components/Toast';
@@ -109,7 +109,7 @@ export const SignInPage: React.FC = () => {
             className="flex items-center font-heading font-bold text-3xl tracking-tight text-white mb-8 hover:opacity-90 transition-opacity cursor-pointer"
             title="LegalMetrix AI - Return to Hero"
           >
-            <ScanLine className="w-10 h-10 text-primary mr-3" />
+            <Scale className="w-10 h-10 text-primary mr-3" />
             LegalMetrix <span className="text-primary ml-1">AI</span>
           </Link>
 
@@ -149,7 +149,7 @@ export const SignInPage: React.FC = () => {
               className="lg:hidden flex items-center font-heading font-bold text-2xl tracking-tight text-white mb-6 hover:opacity-90 transition-opacity cursor-pointer"
               title="LegalMetrix AI - Return to Hero"
             >
-              <ScanLine className="w-7 h-7 text-primary mr-2" />
+              <Scale className="w-7 h-7 text-primary mr-2" />
               LegalMetrix <span className="text-primary ml-0.5">AI</span>
             </Link>
             <h2 className="text-3xl font-heading font-bold text-white">Welcome back, Inspector</h2>

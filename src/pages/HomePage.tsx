@@ -650,11 +650,11 @@ export const HomePage: React.FC = () => {
                   <span className="text-emerald-400 font-mono">ZOOM: 140% • 300 DPI</span>
                 </div>
 
-                <div className="relative mx-auto max-w-sm rounded-lg overflow-hidden border border-white/10 bg-slate-900">
+                <div className="relative mx-auto w-full max-w-sm rounded-lg overflow-hidden border border-white/10 bg-slate-900">
                   <img
                     src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=700&q=80"
                     alt="Evidence Label"
-                    className="w-full h-72 object-cover opacity-80"
+                    className="w-full h-48 sm:h-72 object-cover opacity-80"
                   />
 
                   {/* Dynamic highlighted bounding box */}
@@ -682,7 +682,7 @@ export const HomePage: React.FC = () => {
               <div className="lg:w-5/12 p-6 flex flex-col justify-between bg-[#090D1A]/60">
                 <div className="space-y-5">
                   {/* Selector Tabs */}
-                  <div className="flex gap-2 p-1 bg-white/5 rounded-xl border border-white/10">
+                  <div className="flex flex-col sm:flex-row gap-2 p-1 bg-white/5 rounded-xl border border-white/10">
                     <button
                       onClick={() => setActiveEvidenceTab('mfg')}
                       className={`flex-1 py-2 text-sm font-medium rounded-lg transition-all ${
@@ -736,14 +736,14 @@ export const HomePage: React.FC = () => {
                   </div>
 
                   {/* Inspector Verification Toggle */}
-                  <div className="p-3 rounded-xl border border-white/10 bg-white/[0.02] flex items-center justify-between">
+                  <div className="p-3 rounded-xl border border-white/10 bg-white/[0.02] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div>
                       <div className="text-sm font-bold text-white">Inspector Sign-Off</div>
                       <div className="text-xs text-slate-400">Mark evidence as officer-confirmed</div>
                     </div>
                     <button
                       onClick={() => setInspectorVerified(!inspectorVerified)}
-                      className={`px-3 py-1.5 rounded-lg text-sm font-medium flex items-center space-x-1.5 transition-colors ${
+                      className={`px-3 py-1.5 rounded-lg text-sm font-medium flex items-center justify-center space-x-1.5 transition-colors w-full sm:w-auto ${
                         inspectorVerified
                           ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
                           : 'bg-white/10 text-slate-300 border border-white/10 hover:bg-white/15'
@@ -755,9 +755,9 @@ export const HomePage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-white/10 text-sm text-slate-400 flex items-center justify-between">
+                <div className="pt-4 border-t border-white/10 text-sm text-slate-400 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <span>Tamper-Resistant Hash</span>
-                  <span className="font-mono text-slate-400">SHA-256: 8f9b...a10e</span>
+                  <span className="font-mono text-slate-400 text-xs sm:text-sm">SHA-256: 8f9b...a10e</span>
                 </div>
               </div>
             </div>
@@ -914,20 +914,20 @@ export const HomePage: React.FC = () => {
             {/* Structured Report Mockup */}
             <div className="lg:col-span-6">
               <div className="bg-[#121A2E] text-slate-100 rounded-2xl p-6 shadow-2xl border border-white/10 space-y-5">
-                <div className="flex justify-between items-start border-b border-white/10 pb-4">
+                <div className="flex flex-col sm:flex-row sm:justify-between items-start border-b border-white/10 pb-4 gap-4">
                   <div>
                     <div className="text-sm font-mono text-primary uppercase tracking-wider font-bold">
                       Official Statutory Report Mockup
                     </div>
                     <h3 className="text-xl font-bold font-heading text-white">Legal Metrology Inspection Dossier</h3>
                   </div>
-                  <div className="text-right text-sm font-mono text-slate-400">
+                  <div className="text-left sm:text-right text-sm font-mono text-slate-400">
                     <div>REP-2026-DL-8492</div>
                     <div className="text-slate-500">Date: August 27, 2026</div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                   <div className="bg-white/[0.03] p-3 rounded-lg border border-white/5">
                     <div className="text-slate-400 font-bold uppercase text-xs">Commodity Subject</div>
                     <div className="font-semibold text-white mt-0.5">Ashirvaad Whole Wheat Atta 5kg</div>
@@ -941,17 +941,17 @@ export const HomePage: React.FC = () => {
                 </div>
 
                 {/* Status banner in report */}
-                <div className="flex items-center justify-between p-3 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 text-sm">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 text-sm gap-2">
                   <div className="flex items-center space-x-2">
-                    <AlertTriangle className="w-4 h-4 text-amber-400" />
+                    <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0" />
                     <span className="font-bold">Preliminary Status: Needs Officer Review</span>
                   </div>
                   <span className="font-bold">Score: 82 / 100</span>
                 </div>
 
-                <div className="text-sm text-slate-400 border-t border-white/10 pt-3 flex items-center justify-between">
+                <div className="text-sm text-slate-400 border-t border-white/10 pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <span>Tamper-Proof Digital Verification Stamp</span>
-                  <span className="font-mono font-bold text-emerald-400">VERIFIED // GOV-LMD</span>
+                  <span className="font-mono font-bold text-emerald-400 break-all">VERIFIED // GOV-LMD</span>
                 </div>
               </div>
             </div>

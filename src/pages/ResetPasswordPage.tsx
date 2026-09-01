@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { ScanLine, Lock, ArrowRight, CheckCircle2, Eye, EyeOff } from 'lucide-react';
+import { Scale,  ScanLine, Lock, ArrowRight, CheckCircle2, Eye, EyeOff  } from "lucide-react";
 import { Button } from '../components/ui/Button';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../components/Toast';
@@ -62,7 +62,7 @@ export const ResetPasswordPage: React.FC = () => {
             className="inline-flex items-center font-heading font-bold text-2xl tracking-tight text-white mb-2 hover:opacity-90 transition-opacity cursor-pointer"
             title="LegalMetrix AI - Return to Hero"
           >
-            <ScanLine className="w-8 h-8 text-primary mr-2" />
+            <Scale className="w-8 h-8 text-primary mr-2" />
             LegalMetrix <span className="text-primary ml-0.5">AI</span>
           </Link>
           <h2 className="text-2xl font-heading font-bold text-white">Create New Password</h2>

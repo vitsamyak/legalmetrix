@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ScanLine, ShieldCheck } from 'lucide-react';
+import { Scale,  ScanLine, ShieldCheck  } from "lucide-react";
 import { ShinyText } from './ui/ShinyText';
 import { BlurText } from './ui/BlurText';
 
@@ -54,7 +54,7 @@ export const BrandedLoader: React.FC<BrandedLoaderProps> = ({
         {/* Center Jewel */}
         <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#1E293B] to-[#0F172A] border border-white/10 flex items-center justify-center shadow-inner overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-50" />
-          <ScanLine className="w-7 h-7 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+          <Scale className="w-7 h-7 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
         </div>
       </div>
 

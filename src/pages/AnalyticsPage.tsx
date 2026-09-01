@@ -181,26 +181,28 @@ export const AnalyticsPage = () => {
           <CardTitle>Inspection Trends</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="h-[400px] w-full">
-            {loading ? (
-              <SkeletonLoader className="w-full h-full rounded-xl bg-white/5" />
-            ) : trendData.length === 0 ? (
-              <div className="w-full h-full flex items-center justify-center text-content-muted">Not enough data to display trends</div>
-            ) : (
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={trendData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
-                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8' }} dy={10} />
-                  <YAxis axisLine={false} tickLine={false} tick={{ fill: '#94A3B8' }} />
-                  <Tooltip 
-                    cursor={{ fill: 'rgba(255,255,255,0.02)' }}
-                    contentStyle={{ backgroundColor: '#090C15', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px', color: '#F8FAFC', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
-                  />
-                  <Bar dataKey="compliance" name="Compliant (%)" fill="#3DD6B4" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="violations" name="Violations (%)" fill="#FF6B6B" radius={[4, 4, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            )}
+          <div className="h-[400px] w-full overflow-x-auto overflow-y-hidden custom-scrollbar">
+            <div className="min-w-[600px] h-full">
+              {loading ? (
+                <SkeletonLoader className="w-full h-full rounded-xl bg-white/5" />
+              ) : trendData.length === 0 ? (
+                <div className="w-full h-full flex items-center justify-center text-content-muted">Not enough data to display trends</div>
+              ) : (
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={trendData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
+                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8' }} dy={10} />
+                    <YAxis axisLine={false} tickLine={false} tick={{ fill: '#94A3B8' }} />
+                    <Tooltip 
+                      cursor={{ fill: 'rgba(255,255,255,0.02)' }}
+                      contentStyle={{ backgroundColor: '#090C15', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px', color: '#F8FAFC', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)' }}
+                    />
+                    <Bar dataKey="compliance" name="Compliant (%)" fill="#3DD6B4" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="violations" name="Violations (%)" fill="#FF6B6B" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              )}
+            </div>
           </div>
         </CardContent>
       </Card>
