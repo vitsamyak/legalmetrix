@@ -50,7 +50,7 @@ function App() {
           <ScrollRevealWrapper />
           <ScrollToTop />
           <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 0, pointerEvents: 'none' }}>
-            {typeof window !== 'undefined' && window.innerWidth >= 768 && (
+            {typeof window !== 'undefined' && (
               <LightRays
                 raysOrigin="top-center"
                 raysColor="#6366F1"
