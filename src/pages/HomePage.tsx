@@ -314,7 +314,7 @@ export const HomePage: React.FC = () => {
             <Badge variant="warning" className="px-3 py-1 text-sm">
               Regulatory Challenges
             </Badge>
-            <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white">
+            <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white break-words">
               <BlurText text="Compliance Inspection, Reimagined" delay={50} direction="bottom" className="justify-center" />
             </h2>
             <p className="text-slate-400 text-lg sm:text-xl">
@@ -359,7 +359,7 @@ export const HomePage: React.FC = () => {
             <Badge variant="primary" className="px-3 py-1 text-sm">
               Standardized Workflow
             </Badge>
-            <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white">
+            <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white break-words">
               <BlurText text="From Product Image to Compliance Insight" delay={50} direction="bottom" className="justify-center" />
             </h2>
             <p className="text-slate-400 text-lg sm:text-xl">
@@ -409,7 +409,7 @@ export const HomePage: React.FC = () => {
               <Badge variant="primary" className="px-3 py-1 text-sm">
                 Capabilities
               </Badge>
-              <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white">
+              <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white break-words">
               <BlurText text="Engineered for Comprehensive Enforcement" delay={50} direction="bottom"  />
             </h2>
               <p className="text-slate-400 text-lg">
@@ -469,11 +469,11 @@ export const HomePage: React.FC = () => {
       <section id="compliance" className="w-full py-24 border-t border-white/[0.08] relative">
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-6 space-y-6 min-w-0">
               <Badge variant="primary" className="px-3 py-1 text-sm">
                 Statutory Basis
               </Badge>
-              <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white leading-tight">
+              <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white leading-tight break-words">
               <BlurText text="Built Around Regulatory Compliance" delay={50} direction="bottom"  />
             </h2>
               <p className="text-slate-300 text-lg leading-relaxed">
@@ -523,7 +523,7 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-6 space-y-4">
+            <div className="lg:col-span-6 space-y-4 min-w-0">
               <div className="bg-[#121A2E] border border-white/10 rounded-2xl p-4 sm:p-6 space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-white/10 gap-2">
                   <span className="text-base font-heading font-bold text-white">Mapped Mandatory Declarations</span>
@@ -566,7 +566,7 @@ export const HomePage: React.FC = () => {
             <Badge variant="primary" className="px-3 py-1 text-sm">
               Architecture
             </Badge>
-            <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white">
+            <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white break-words">
               <BlurText text="AI That Works With Evidence" delay={50} direction="bottom" className="justify-center" />
             </h2>
             <p className="text-slate-400 text-lg sm:text-xl">
@@ -631,7 +631,7 @@ export const HomePage: React.FC = () => {
             <Badge variant="info" className="px-3 py-1 text-sm">
               Audit Integrity
             </Badge>
-            <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white">
+            <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white break-words">
               <BlurText text="Every Finding Has Evidence" delay={50} direction="bottom" className="justify-center" />
             </h2>
             <p className="text-slate-400 text-lg">
@@ -775,7 +775,7 @@ export const HomePage: React.FC = () => {
             <Badge variant="primary" className="px-3 py-1 text-sm">
               Enforcement Intelligence
             </Badge>
-            <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white">
+            <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white break-words">
               <BlurText text="Turn Inspection Data into Actionable Intelligence" delay={50} direction="bottom" className="justify-center" />
             </h2>
             <p className="text-slate-400 text-lg">
@@ -867,11 +867,11 @@ export const HomePage: React.FC = () => {
       <section id="reports" className="w-full py-24 border-t border-white/[0.08] relative">
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-6 space-y-6 min-w-0">
               <Badge variant="primary" className="px-3 py-1 text-sm">
                 Export Ready
               </Badge>
-              <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white leading-tight">
+              <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight text-white leading-tight break-words">
               <BlurText text="Inspection Reports, Ready to Review" delay={50} direction="bottom"  />
             </h2>
               <p className="text-slate-300 text-lg leading-relaxed">
@@ -913,7 +913,7 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Structured Report Mockup */}
-            <div className="lg:col-span-6">
+            <div className="lg:col-span-6 min-w-0">
               <div className="bg-[#121A2E] text-slate-100 rounded-2xl p-6 shadow-2xl border border-white/10 space-y-5">
                 <div className="flex flex-col sm:flex-row sm:justify-between items-start border-b border-white/10 pb-4 gap-4">
                   <div>
