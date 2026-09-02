@@ -255,7 +255,7 @@ export const DashboardLayout = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0 relative z-10 w-full overflow-hidden">
         <header className="h-16 lg:h-20 bg-obsidian/30 backdrop-blur-2xl border-b border-white/10 flex items-center px-4 lg:px-8 justify-between flex-shrink-0 z-20 sticky top-0 shadow-[0_4px_30px_rgba(0,0,0,0.1)] gap-2 lg:gap-6">
-          <div className="flex items-center space-x-2 lg:space-x-3 min-w-max">
+          <div className="flex items-center space-x-2 lg:space-x-3 flex-shrink-0">
             <button 
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
               className="p-2 lg:p-2.5 rounded-xl text-white/60 hover:bg-white/10 hover:text-white transition-all cursor-pointer border border-transparent hover:border-white/10"
@@ -303,9 +303,9 @@ export const DashboardLayout = () => {
             </SpotlightCard>
           </div>
           
-          <div className="flex items-center space-x-2 lg:space-x-5 min-w-max">
+          <div className="flex items-center justify-end space-x-2 lg:space-x-5 min-w-0">
             {/* Notification Bell */}
-            <div className="relative" ref={notificationsRef}>
+            <div className="relative flex-shrink-0" ref={notificationsRef}>
               <button 
                 onClick={() => setShowNotifications(!showNotifications)}
                 className="relative p-2.5 rounded-xl text-white/60 hover:bg-white/10 hover:text-white transition-all border border-transparent hover:border-white/10 group"
@@ -394,16 +394,16 @@ export const DashboardLayout = () => {
 
             <Link
               to="/dashboard/profile"
-              className="flex items-center space-x-3 pl-2 pr-4 py-1.5 rounded-full bg-[#1E293B]/50 hover:bg-[#1E293B] border border-white/10 transition-all shadow-lg hover:shadow-primary/10"
+              className="flex items-center space-x-2 sm:space-x-3 pl-2 pr-3 sm:pr-4 py-1.5 rounded-full bg-[#1E293B]/50 hover:bg-[#1E293B] border border-white/10 transition-all shadow-lg hover:shadow-primary/10 min-w-0"
             >
-              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 text-primary flex items-center justify-center text-[10px] font-bold overflow-hidden border border-primary/30">
+              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 text-primary flex items-center justify-center text-[10px] font-bold overflow-hidden border border-primary/30 flex-shrink-0">
                 {user.avatar ? (
                   <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
                 ) : (
                   userInitials
                 )}
               </div>
-              <span className="text-sm font-semibold text-white max-w-[120px] truncate tracking-wide">{user.name}</span>
+              <span className="text-sm font-semibold text-white truncate tracking-wide hidden min-[360px]:block">{user.name}</span>
             </Link>
           </div>
         </header>

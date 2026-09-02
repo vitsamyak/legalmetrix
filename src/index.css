@@ -21,11 +21,11 @@
   --color-content-faint: #64748B;
   --color-border: rgba(255, 255, 255, 0.1);
 
-  --font-heading: "Inter", system-ui, sans-serif;
-  --font-h1: "Inter", system-ui, sans-serif;
-  --font-h23: "Inter", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-h1: "Space Grotesk", system-ui, sans-serif;
+  --font-h23: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
