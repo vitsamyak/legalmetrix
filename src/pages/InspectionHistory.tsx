@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
+import { Checkbox } from '../components/ui/Checkbox';
 import { Badge } from '../components/ui/Badge';
 import { Search, Filter, Download, Eye, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -223,9 +224,7 @@ export const InspectionHistory = () => {
             <thead className="text-xs text-content-muted uppercase bg-surface-light border-b border-border">
               <tr>
                 <th className="px-6 py-4">
-                  <input 
-                    type="checkbox" 
-                    className="rounded border-border bg-sidebar/50 focus:ring-primary focus:ring-offset-0 text-primary"
+                  <Checkbox 
                     checked={paginatedInspections.length > 0 && paginatedInspections.every(item => selectedIds.has(item.id))}
                     onChange={handleSelectAll}
                   />
@@ -272,9 +271,7 @@ export const InspectionHistory = () => {
                     className={`transition-colors ${selectedIds.has(item.id) ? 'bg-primary/5 hover:bg-primary/10' : 'hover:bg-surface-light/50'}`}
                   >
                     <td className="px-6 py-4" onClick={(e) => e.stopPropagation()}>
-                      <input 
-                        type="checkbox" 
-                        className="rounded border-border bg-sidebar/50 focus:ring-primary focus:ring-offset-0 text-primary"
+                      <Checkbox 
                         checked={selectedIds.has(item.id)}
                         onChange={() => handleSelectOne(item.id)}
                       />

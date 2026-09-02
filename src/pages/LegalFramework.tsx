@@ -15,12 +15,33 @@ const legalDocs = [
 
 export const LegalFramework = () => {
   const { showToast } = useToast();
+  const [downloadingId, setDownloadingId] = React.useState<string | null>(null);
 
-  const handleDownload = (doc: any) => {
-    showToast(`Opening ${doc.title} document...`, 'success');
-    setTimeout(() => {
+  const handleDownload = async (doc: any) => {
+    setDownloadingId(doc.id);
+    showToast(`Downloading ${doc.title}...`, 'info');
+    try {
+      const response = await fetch(doc.url);
+      if (!response.ok) throw new Error('Network response failed');
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = `${doc.title}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+      
+      showToast('Download completed successfully!', 'success');
+    } catch (error) {
+      console.warn('Direct download blocked by CORS, opening in new tab instead.', error);
       window.open(doc.url, '_blank', 'noopener,noreferrer');
-    }, 800);
+      showToast('Opened document in new tab.', 'success');
+    } finally {
+      setDownloadingId(null);
+    }
   };
 
   const handleExternal = (doc: any) => {
@@ -55,7 +76,13 @@ export const LegalFramework = () => {
                 </div>
                 <div className="flex items-center space-x-2 w-full sm:w-auto mt-2 sm:mt-0">
                   <Badge variant={doc.status === 'Active' ? 'success' : 'neutral'}>{doc.status}</Badge>
-                  <Button variant="secondary" size="icon" className="h-8 w-8" onClick={() => handleDownload(doc)}>
+                  <Button 
+                    variant="secondary" 
+                    size="icon" 
+                    className="h-8 w-8" 
+                    onClick={() => handleDownload(doc)}
+                    isLoading={downloadingId === doc.id}
+                  >
                     <Download className="w-4 h-4" />
                   </Button>
                   <Button variant="secondary" size="icon" className="h-8 w-8" onClick={() => handleExternal(doc)}>

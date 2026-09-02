@@ -3,6 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card'
 import { Badge } from '../components/ui/Badge';
 import { Search, Filter, ShieldCheck, Scale, History, BookOpen } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { Checkbox } from '../components/ui/Checkbox';
 import { Disclaimer } from '../components/Disclaimer';
 import { supabase } from '../lib/supabase';
 import { BrandedLoader } from '../components/BrandedLoader';
@@ -168,9 +169,7 @@ export const RulesPage = () => {
             <thead className="text-xs text-content-muted uppercase bg-obsidian border-b border-border">
               <tr>
                 <th className="px-6 py-4">
-                  <input 
-                    type="checkbox" 
-                    className="rounded border-border bg-sidebar/50 focus:ring-primary focus:ring-offset-0 text-primary"
+                  <Checkbox 
                     checked={filteredRules.length > 0 && selectedIds.size === filteredRules.length}
                     onChange={handleSelectAll}
                   />
@@ -208,9 +207,7 @@ export const RulesPage = () => {
                 filteredRules.map((rule) => (
                   <tr key={rule.id} className={`group transition-colors ${selectedIds.has(rule.id) ? 'bg-primary/5 hover:bg-primary/10' : 'hover:bg-white/5'}`}>
                     <td className="px-6 py-4" onClick={(e) => e.stopPropagation()}>
-                      <input 
-                        type="checkbox" 
-                        className="rounded border-border bg-sidebar/50 focus:ring-primary focus:ring-offset-0 text-primary"
+                      <Checkbox 
                         checked={selectedIds.has(rule.id)}
                         onChange={() => handleSelectOne(rule.id)}
                       />

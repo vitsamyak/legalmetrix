@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
+import { Checkbox } from '../components/ui/Checkbox';
 import { Badge } from '../components/ui/Badge';
 import { Search, Download, FileText, Eye, Loader2 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
@@ -238,9 +239,7 @@ export const ReportsPage = () => {
             <thead className="text-xs text-content-muted uppercase bg-obsidian border-b border-border">
               <tr>
                 <th className="px-6 py-4">
-                  <input 
-                    type="checkbox" 
-                    className="rounded border-border bg-sidebar/50 focus:ring-primary focus:ring-offset-0 text-primary"
+                  <Checkbox 
                     checked={paginatedReports.length > 0 && paginatedReports.every(item => {
                       const id = item.inspection_id || item.inspections?.id;
                       return id ? selectedIds.has(id) : false;
@@ -302,9 +301,7 @@ export const ReportsPage = () => {
                   return (
                     <tr key={item.id} className={`transition-colors ${selectedIds.has(actualInspectionId) ? 'bg-primary/5 hover:bg-primary/10' : 'hover:bg-white/5'}`}>
                       <td className="px-6 py-4" onClick={(e) => e.stopPropagation()}>
-                        <input 
-                          type="checkbox" 
-                          className="rounded border-border bg-sidebar/50 focus:ring-primary focus:ring-offset-0 text-primary"
+                        <Checkbox 
                           checked={selectedIds.has(actualInspectionId)}
                           onChange={() => handleSelectOne(actualInspectionId)}
                         />

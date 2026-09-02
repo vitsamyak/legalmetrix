@@ -171,7 +171,7 @@ export const AiAssistantPage = () => {
   };
 
   return (
-    <div className="flex h-[calc(100dvh-130px)] lg:h-[calc(100dvh-162px)] bg-obsidian/40 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden shadow-2xl relative">
+    <div className="flex flex-1 w-full h-full relative overflow-hidden bg-[#0B1020] sm:bg-transparent">
       {/* Sidebar - History */}
       <div 
         className={cn(

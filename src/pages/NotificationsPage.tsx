@@ -3,26 +3,19 @@ import { Card, CardContent } from '../components/ui/Card';
 import { ShieldAlert, FileText, Settings, Bell, Check, Trash2 } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { useToast } from '../components/Toast';
+import { useNotifications } from '../context/NotificationContext';
 
 export const NotificationsPage = () => {
   const { showToast } = useToast();
-  const [notifications, setNotifications] = useState([
-    { id: 1, title: 'New Rule Update', desc: 'Rule 6(1)(a) amendment published. Please review the updated compliance requirements.', time: '2 hours ago', read: false, type: 'rule' },
-    { id: 2, title: 'Inspection Alert', desc: 'High risk violation flagged in recent scan of "Packaged Food" product.', time: '5 hours ago', read: false, type: 'alert' },
-    { id: 3, title: 'System Maintenance', desc: 'Scheduled downtime on Sunday 2AM for system upgrades and database optimization.', time: '1 day ago', read: true, type: 'system' },
-    { id: 4, title: 'Weekly Report Ready', desc: 'Your compliance summary for the week is ready to download.', time: '2 days ago', read: true, type: 'rule' },
-    { id: 5, title: 'Account Security', desc: 'New login detected from a different IP address.', time: '3 days ago', read: true, type: 'alert' },
-  ]);
+  const { notifications, unreadCount, markAllAsRead, clearAll } = useNotifications();
 
-  const unreadCount = notifications.filter(n => !n.read).length;
-
-  const markAllAsRead = () => {
-    setNotifications(notifications.map(n => ({ ...n, read: true })));
+  const handleMarkAllAsRead = () => {
+    markAllAsRead();
     showToast('All notifications marked as read', 'success');
   };
 
-  const clearAll = () => {
-    setNotifications([]);
+  const handleClearAll = () => {
+    clearAll();
     showToast('Notifications cleared', 'success');
   };
 
@@ -36,10 +29,10 @@ export const NotificationsPage = () => {
           <p className="text-content-muted mt-1">Manage your system alerts and compliance updates.</p>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="secondary" onClick={markAllAsRead} disabled={unreadCount === 0} className="flex items-center gap-2">
+          <Button variant="secondary" onClick={handleMarkAllAsRead} disabled={unreadCount === 0} className="flex items-center gap-2">
             <Check className="w-4 h-4" /> Mark all read
           </Button>
-          <Button variant="danger" onClick={clearAll} disabled={notifications.length === 0} className="flex items-center gap-2">
+          <Button variant="danger" onClick={handleClearAll} disabled={notifications.length === 0} className="flex items-center gap-2">
             <Trash2 className="w-4 h-4" /> Clear all
           </Button>
         </div>

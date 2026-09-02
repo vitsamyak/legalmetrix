@@ -4,6 +4,7 @@ import { Card, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../components/Toast';
+import { useNotifications } from '../context/NotificationContext';
 import {
   Camera,
   Trash2,
@@ -22,6 +23,7 @@ import {
 export const ProfilePage: React.FC = () => {
   const { user, updateProfile, updateAvatar, removeAvatar } = useAuth();
   const { showToast } = useToast();
+  const { addNotification } = useNotifications();
 
   // Local form state
   const [formData, setFormData] = useState({
@@ -87,6 +89,7 @@ export const ProfilePage: React.FC = () => {
       if (res.success) {
         setIsSaved(true);
         showToast('Profile updated successfully.', 'success');
+        addNotification('Profile Updated', 'Your inspector profile details have been successfully saved.', 'success');
         setTimeout(() => setIsSaved(false), 3000);
       } else {
         showToast(res.error || 'Could not update profile.', 'error');

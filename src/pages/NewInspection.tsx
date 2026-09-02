@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { Disclaimer } from '../components/Disclaimer';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../components/Toast';
+import { useNotifications } from '../context/NotificationContext';
 import { supabase } from '../lib/supabase';
 import { BrandedLoader } from '../components/BrandedLoader';
 import { AiProcessingLoader } from '../components/AiProcessingLoader';
@@ -22,6 +23,7 @@ const steps = [
 export const NewInspection = () => {
   const { user } = useAuth();
   const { showToast } = useToast();
+  const { addNotification } = useNotifications();
   const [currentStep, setCurrentStep] = useState(0);
   const navigate = useNavigate();
 
@@ -253,8 +255,10 @@ export const NewInspection = () => {
       if (success) {
         setCurrentStep(4);
         showToast('Inspection and AI analysis securely completed!', 'success');
+        addNotification('Inspection Completed', `AI Analysis finished for ${productName}.`, 'success');
       } else {
         showToast('AI Analysis failed. See details on screen.', 'error');
+        addNotification('Inspection Failed', `AI Analysis failed for ${productName}.`, 'alert');
       }
     } catch (err: any) {
       console.error(err);
@@ -270,6 +274,7 @@ export const NewInspection = () => {
     if (success) {
       setCurrentStep(4);
       showToast('Inspection and AI analysis securely completed!', 'success');
+      addNotification('Inspection Completed', `AI Analysis finished for ${productName} after retry.`, 'success');
     }
   };
 

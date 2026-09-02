@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { NotificationProvider } from './context/NotificationContext';
 import { ToastProvider } from './components/Toast';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { PublicLayout } from './layouts/PublicLayout';
@@ -45,9 +46,10 @@ function ScrollRevealWrapper() {
 function App() {
   return (
     <AuthProvider>
-      <ToastProvider>
-        <Router>
-          <ScrollRevealWrapper />
+      <NotificationProvider>
+        <ToastProvider>
+          <Router>
+            <ScrollRevealWrapper />
           <ScrollToTop />
           <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 0, pointerEvents: 'none' }}>
             {typeof window !== 'undefined' && (
@@ -130,7 +132,8 @@ function App() {
           </Suspense>
           <ChatbotWidget />
         </Router>
-      </ToastProvider>
+        </ToastProvider>
+      </NotificationProvider>
     </AuthProvider>
   );
 }

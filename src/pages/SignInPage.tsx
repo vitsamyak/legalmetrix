@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Scale,  ScanLine, Lock, Mail, ArrowRight, ShieldCheck, Eye, EyeOff, CheckCircle2  } from "lucide-react";
+import { Scale, ScanLine, Lock, Mail, ArrowRight, ShieldCheck, Eye, EyeOff, CheckCircle2 } from "lucide-react";
 import { Button } from '../components/ui/Button';
+import { Checkbox } from '../components/ui/Checkbox';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../components/Toast';
 
@@ -232,15 +233,11 @@ export const SignInPage: React.FC = () => {
             </div>
 
             <div className="flex items-center justify-between text-xs">
-              <label className="flex items-center text-slate-400 hover:text-slate-300 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="rounded border-white/20 bg-white/5 text-primary focus:ring-primary h-4 w-4"
-                />
-                <span className="ml-2">Remember session</span>
-              </label>
+              <Checkbox
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                label="Remember session"
+              />
 
               <Link to="/forgot-password" className="text-primary hover:underline">
                 Forgot password?

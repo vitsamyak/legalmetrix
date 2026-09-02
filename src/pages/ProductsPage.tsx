@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
+import { Checkbox } from '../components/ui/Checkbox';
 import { Badge } from '../components/ui/Badge';
 import { Search, Filter, MoreVertical, PackageSearch, Trash2, ChevronDown, Eye } from 'lucide-react';
 import { supabase } from '../lib/supabase';
@@ -209,9 +210,7 @@ export const ProductsPage = () => {
             <thead className="text-xs text-content-muted uppercase bg-obsidian border-b border-border">
               <tr>
                 <th className="px-6 py-4">
-                  <input 
-                    type="checkbox" 
-                    className="rounded border-border bg-sidebar/50 focus:ring-primary focus:ring-offset-0 text-primary"
+                  <Checkbox 
                     checked={paginatedProducts.length > 0 && paginatedProducts.every(item => selectedIds.has(item.id))}
                     onChange={handleSelectAll}
                   />
@@ -259,9 +258,7 @@ export const ProductsPage = () => {
                     className={`transition-colors ${selectedIds.has(item.id) ? 'bg-primary/5 hover:bg-primary/10' : 'hover:bg-white/5'}`}
                   >
                     <td className="px-6 py-4" onClick={(e) => e.stopPropagation()}>
-                      <input 
-                        type="checkbox" 
-                        className="rounded border-border bg-sidebar/50 focus:ring-primary focus:ring-offset-0 text-primary"
+                      <Checkbox 
                         checked={selectedIds.has(item.id)}
                         onChange={() => handleSelectOne(item.id)}
                       />

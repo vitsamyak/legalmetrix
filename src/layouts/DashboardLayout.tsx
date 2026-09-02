@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { useAuth } from '../context/AuthContext';
+import { useNotifications } from '../context/NotificationContext';
 import { ShinyText } from '../components/ui/ShinyText';
 import { SpotlightCard } from '../components/ui/SpotlightCard';
 import { AnimatedContent } from '../components/ui/AnimatedContent';
@@ -61,6 +62,7 @@ export const DashboardLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(() => window.innerWidth >= 1024);
   const [showNotifications, setShowNotifications] = useState(false);
   const notificationsRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -91,17 +93,18 @@ export const DashboardLayout = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const [notifications, setNotifications] = useState([
-    { id: 1, title: 'New Rule Update', desc: 'Rule 6(1)(a) amendment published.', time: '2h ago', read: false, type: 'rule' },
-    { id: 2, title: 'Inspection Alert', desc: 'High risk violation flagged in recent scan.', time: '5h ago', read: false, type: 'alert' },
-    { id: 3, title: 'System Maintenance', desc: 'Scheduled downtime on Sunday 2AM.', time: '1d ago', read: true, type: 'system' },
-  ]);
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
-  const unreadCount = notifications.filter(n => !n.read).length;
-
-  const markAllAsRead = () => {
-    setNotifications(notifications.map(n => ({ ...n, read: true })));
-  };
+  const { notifications, unreadCount, markAsRead, markAllAsRead } = useNotifications();
 
   const handleLogout = async () => {
     await logout();
@@ -291,6 +294,7 @@ export const DashboardLayout = () => {
               <div className="relative flex items-center w-full h-9 lg:h-10 px-3 bg-[#0B1020]/90 rounded-xl overflow-hidden shadow-inner">
                 <Search className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0" />
                 <input 
+                  ref={searchInputRef}
                   type="text" 
                   placeholder="Search inspections..." 
                   className="w-full bg-transparent border-none text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-0" 
@@ -337,7 +341,7 @@ export const DashboardLayout = () => {
                       ) : (
                         notifications.map((notif) => (
                           <div key={notif.id} onClick={() => {
-                            setNotifications(notifications.map(n => n.id === notif.id ? { ...n, read: true } : n));
+                            markAsRead(notif.id);
                           }} className={`group relative p-4 border-b border-white/5 hover:bg-white/5 transition-all cursor-pointer overflow-hidden ${notif.read ? 'opacity-60 bg-transparent' : 'bg-primary/[0.02]'}`}>
                             <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                             
@@ -408,7 +412,7 @@ export const DashboardLayout = () => {
           </div>
         </header>
         
-        <main className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 lg:p-10 relative">
+        <main className={cn("flex-1 overflow-x-hidden relative flex flex-col", location.pathname.includes('/assistant') ? "p-0 overflow-hidden" : "p-4 sm:p-6 lg:p-10 overflow-y-auto")}>
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
@@ -416,7 +420,7 @@ export const DashboardLayout = () => {
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-7xl mx-auto"
+              className={cn("mx-auto flex-1 w-full flex flex-col", location.pathname.includes('/assistant') ? "max-w-none h-full" : "max-w-7xl")}
             >
               <Outlet />
             </motion.div>

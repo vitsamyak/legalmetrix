@@ -14,6 +14,7 @@ import { Scale,
   CheckCircle2,
  } from "lucide-react";
 import { Button } from '../components/ui/Button';
+import { Checkbox } from '../components/ui/Checkbox';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../components/Toast';
 
@@ -411,20 +412,18 @@ export const SignUpPage: React.FC = () => {
 
                 {/* Terms and Privacy Policy Checkbox */}
                 <div className="pt-2">
-                  <label className="flex items-start text-xs text-slate-300 cursor-pointer">
-                    <input
-                      name="agreeTerms"
-                      type="checkbox"
-                      checked={formData.agreeTerms}
-                      onChange={handleChange}
-                      className="mt-0.5 rounded border-white/20 bg-white/5 text-primary focus:ring-primary h-4 w-4 flex-shrink-0"
-                    />
-                    <span className="ml-2.5 leading-relaxed">
-                      I agree to the <span className="text-primary hover:underline">Terms of Service</span> and{' '}
-                      <span className="text-primary hover:underline">Privacy Policy</span> regarding statutory compliance
-                      data.
-                    </span>
-                  </label>
+                  <Checkbox
+                    name="agreeTerms"
+                    checked={formData.agreeTerms}
+                    onChange={handleChange}
+                    label={
+                      <>
+                        I agree to the <span className="text-primary hover:underline">Terms of Service</span> and{' '}
+                        <span className="text-primary hover:underline">Privacy Policy</span> regarding statutory compliance
+                        data.
+                      </>
+                    }
+                  />
                 </div>
 
                 <Button
