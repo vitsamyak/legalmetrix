@@ -120,18 +120,18 @@ export const HomePage: React.FC = () => {
         }}
       >
         {/* Full-width Ambient Glow Elements (Optimized for Scroll Performance) */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
           <div 
-            className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] max-w-[95vw] h-[500px] rounded-full pointer-events-none transform-gpu" 
-            style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)' }} 
+            className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] max-w-[95vw] h-[500px] rounded-full pointer-events-none transform-gpu mix-blend-screen" 
+            style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(99,102,241,0) 70%)' }} 
           />
           <div 
-            className="absolute top-1/3 left-1/6 w-[450px] max-w-[45vw] h-[450px] rounded-full pointer-events-none hidden sm:block transform-gpu" 
-            style={{ background: 'radial-gradient(circle, rgba(61,214,180,0.1) 0%, transparent 70%)' }} 
+            className="absolute top-1/3 left-1/6 w-[450px] max-w-[45vw] h-[450px] rounded-full pointer-events-none hidden sm:block transform-gpu mix-blend-screen" 
+            style={{ background: 'radial-gradient(circle, rgba(61,214,180,0.1) 0%, rgba(61,214,180,0) 70%)' }} 
           />
           <div 
-            className="absolute top-1/2 right-1/6 w-[450px] max-w-[45vw] h-[450px] rounded-full pointer-events-none hidden sm:block transform-gpu" 
-            style={{ background: 'radial-gradient(circle, rgba(93,217,255,0.1) 0%, transparent 70%)' }} 
+            className="absolute top-1/2 right-1/6 w-[450px] max-w-[45vw] h-[450px] rounded-full pointer-events-none hidden sm:block transform-gpu mix-blend-screen" 
+            style={{ background: 'radial-gradient(circle, rgba(93,217,255,0.1) 0%, rgba(93,217,255,0) 70%)' }} 
           />
         </div>
 
