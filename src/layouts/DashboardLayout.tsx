@@ -171,7 +171,7 @@ export const DashboardLayout = () => {
   );
 
   return (
-    <div className="h-screen w-full flex overflow-hidden bg-transparent">
+    <div className="h-[100dvh] w-full flex overflow-hidden bg-transparent">
       {/* Sidebar Overlay (Mobile) */}
       <AnimatePresence>
         {isSidebarOpen && (
@@ -394,16 +394,16 @@ export const DashboardLayout = () => {
 
             <Link
               to="/dashboard/profile"
-              className="flex items-center space-x-2 sm:space-x-3 pl-2 pr-3 sm:pr-4 py-1.5 rounded-full bg-[#1E293B]/50 hover:bg-[#1E293B] border border-white/10 transition-all shadow-lg hover:shadow-primary/10 min-w-0"
+              className="flex items-center space-x-0 sm:space-x-3 p-1 sm:pl-2 sm:pr-4 sm:py-1.5 rounded-full bg-[#1E293B]/50 hover:bg-[#1E293B] border border-white/10 transition-all shadow-lg hover:shadow-primary/10 min-w-0"
             >
-              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 text-primary flex items-center justify-center text-[10px] font-bold overflow-hidden border border-primary/30 flex-shrink-0">
+              <div className="w-8 h-8 sm:w-7 sm:h-7 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 text-primary flex items-center justify-center text-[10.5px] sm:text-[10px] font-bold overflow-hidden border border-primary/30 flex-shrink-0">
                 {user.avatar ? (
                   <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
                 ) : (
                   userInitials
                 )}
               </div>
-              <span className="text-sm font-semibold text-white truncate tracking-wide hidden min-[360px]:block">{user.name}</span>
+              <span className="text-sm font-semibold text-white truncate tracking-wide hidden sm:block">{user.name}</span>
             </Link>
           </div>
         </header>

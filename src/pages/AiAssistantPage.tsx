@@ -171,7 +171,7 @@ export const AiAssistantPage = () => {
   };
 
   return (
-    <div className="flex h-[calc(100vh-130px)] lg:h-[calc(100vh-162px)] bg-obsidian/40 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden shadow-2xl relative">
+    <div className="flex h-[calc(100dvh-130px)] lg:h-[calc(100dvh-162px)] bg-obsidian/40 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden shadow-2xl relative">
       {/* Sidebar - History */}
       <div 
         className={cn(
@@ -351,25 +351,25 @@ export const AiAssistantPage = () => {
         </div>
 
         {/* Input */}
-        <div className="p-4 md:p-6 bg-obsidian/40 border-t border-white/10">
-          <div className="relative max-w-4xl mx-auto flex items-center">
+        <div className="p-3 md:p-6 bg-obsidian/40 border-t border-white/10">
+          <div className="relative max-w-4xl mx-auto flex items-center min-w-0">
             <input
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Ask a question about Legal Metrology compliance..."
-              className="w-full bg-[#0B1020]/80 border border-white/10 rounded-full pl-6 pr-14 py-4 text-sm md:text-base focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 text-content placeholder-content-muted transition-all shadow-inner"
+              className="w-full bg-[#0B1020]/80 border border-white/10 rounded-full pl-5 md:pl-6 pr-12 md:pr-14 py-3 md:py-4 text-sm md:text-base focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 text-content placeholder-content-muted transition-all shadow-inner truncate"
             />
             <button
               onClick={handleSendMessage}
               disabled={!inputValue.trim() || isLoading}
-              className="absolute right-2 p-2.5 bg-primary hover:bg-primary-hover disabled:bg-primary/30 disabled:cursor-not-allowed text-white rounded-full transition-all shadow-[0_0_15px_rgba(99,102,241,0.3)] flex items-center justify-center group"
+              className="absolute right-1.5 md:right-2 p-2 md:p-2.5 bg-primary hover:bg-primary-hover disabled:bg-primary/30 disabled:cursor-not-allowed text-white rounded-full transition-all shadow-[0_0_15px_rgba(99,102,241,0.3)] flex items-center justify-center group flex-shrink-0"
             >
               <Send className="w-4 h-4 group-hover:scale-110 transition-transform" />
             </button>
           </div>
-          <div className="text-center mt-3 text-xs text-content-muted font-medium tracking-wide">
+          <div className="text-center mt-2 md:mt-3 text-[10px] md:text-xs text-content-muted font-medium tracking-wide">
             LegalMetrix AI can make mistakes. Verify important compliance information.
           </div>
         </div>
