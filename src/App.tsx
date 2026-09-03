@@ -67,7 +67,7 @@ function App() {
             )}
           </div>
           <Suspense fallback={<BrandedLoader fullScreen={true} message="LegalMetrix AI" subMessage="Loading application modules..." />}>
-            <div style={{ position: 'relative', zIndex: 1, width: '100%', minHeight: '100vh' }}>
+            <div style={{ position: 'relative', zIndex: 1, width: '100%', minHeight: '100dvh' }}>
               <Routes>
                 {/* Public Landing Pages */}
                 <Route element={<PublicLayout />}>

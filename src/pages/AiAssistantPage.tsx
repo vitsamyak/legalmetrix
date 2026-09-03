@@ -171,15 +171,15 @@ export const AiAssistantPage = () => {
   };
 
   return (
-    <div className="flex flex-1 w-full h-full relative overflow-hidden bg-[#0B1020] sm:bg-transparent">
+    <div className="flex flex-1 w-full h-full min-h-0 relative overflow-hidden bg-[#0B1020] sm:bg-transparent">
       {/* Sidebar - History */}
       <div 
         className={cn(
-          "bg-[#0B1020]/95 backdrop-blur-xl md:bg-obsidian/60 border-r border-white/10 flex flex-col transition-all duration-300 absolute md:relative z-20 h-full",
+          "bg-[#0B1020]/95 backdrop-blur-xl md:bg-obsidian/60 border-r border-white/10 flex flex-col min-h-0 transition-all duration-300 absolute md:relative z-20 h-full",
           isSidebarOpen ? "w-[280px] translate-x-0" : "w-[280px] -translate-x-full md:translate-x-0 md:w-0 md:border-none md:opacity-0"
         )}
       >
-        <div className="p-4 border-b border-white/10">
+        <div className="p-4 border-b border-white/10 flex-shrink-0">
           <button
             onClick={startNewChat}
             className="w-full py-2.5 px-4 bg-primary/20 hover:bg-primary/30 text-primary rounded-xl flex items-center justify-center gap-2 transition-colors font-medium border border-primary/30"
@@ -211,7 +211,7 @@ export const AiAssistantPage = () => {
                 <MessageSquare className={cn("w-4 h-4 shrink-0", activeConvId === conv.id ? "text-primary" : "text-white/40")} />
                 
                 {editingConvId === conv.id ? (
-                  <div className="flex-1 flex items-center gap-2">
+                  <div className="flex-1 flex items-center gap-2 min-w-0">
                     <input
                       type="text"
                       value={editTitle}
@@ -220,14 +220,14 @@ export const AiAssistantPage = () => {
                         if (e.key === 'Enter') saveEdit(e, conv.id);
                         if (e.key === 'Escape') cancelEdit(e as any);
                       }}
-                      className="flex-1 bg-obsidian border border-white/20 rounded px-2 py-1 text-xs text-white focus:outline-none focus:border-primary/50 w-full"
+                      className="flex-1 min-w-0 bg-obsidian border border-white/20 rounded px-2 py-1 text-xs text-white focus:outline-none focus:border-primary/50 w-full"
                       autoFocus
                       onClick={e => e.stopPropagation()}
                     />
-                    <button onClick={(e) => saveEdit(e, conv.id)} className="p-1 hover:text-emerald-400 text-content-muted transition-colors">
+                    <button onClick={(e) => saveEdit(e, conv.id)} className="p-1 hover:text-emerald-400 text-content-muted transition-colors flex-shrink-0">
                       <Check className="w-3.5 h-3.5" />
                     </button>
-                    <button onClick={cancelEdit} className="p-1 hover:text-red-400 text-content-muted transition-colors">
+                    <button onClick={cancelEdit} className="p-1 hover:text-red-400 text-content-muted transition-colors flex-shrink-0">
                       <X className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -259,7 +259,7 @@ export const AiAssistantPage = () => {
       </div>
 
       {/* Main Chat Area */}
-      <div className="flex-1 flex flex-col min-w-0 bg-[#0B1020]/30 relative z-10">
+      <div className="flex-1 flex flex-col min-w-0 min-h-0 bg-[#0B1020]/30 relative z-10">
         {/* Mobile Sidebar Overlay */}
         <AnimatePresence>
           {isSidebarOpen && (

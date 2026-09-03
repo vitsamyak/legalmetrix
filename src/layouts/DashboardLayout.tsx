@@ -174,7 +174,7 @@ export const DashboardLayout = () => {
   );
 
   return (
-    <div className="h-[100dvh] w-full flex overflow-hidden bg-transparent">
+    <div className="fixed inset-0 w-full flex overflow-hidden bg-transparent">
       {/* Sidebar Overlay (Mobile) */}
       <AnimatePresence>
         {isSidebarOpen && (
@@ -412,7 +412,7 @@ export const DashboardLayout = () => {
           </div>
         </header>
         
-        <main className={cn("flex-1 overflow-x-hidden relative flex flex-col", location.pathname.includes('/assistant') ? "p-0 overflow-hidden" : "p-4 sm:p-6 lg:p-10 overflow-y-auto")}>
+        <main className={cn("flex-1 overflow-x-hidden relative flex flex-col min-h-0", location.pathname.includes('/assistant') ? "p-0 overflow-hidden" : "p-4 sm:p-6 lg:p-10 overflow-y-auto")}>
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
@@ -420,7 +420,7 @@ export const DashboardLayout = () => {
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className={cn("mx-auto flex-1 w-full flex flex-col", location.pathname.includes('/assistant') ? "max-w-none h-full" : "max-w-7xl")}
+              className={cn("mx-auto flex-1 w-full flex flex-col min-h-0", location.pathname.includes('/assistant') ? "max-w-none h-full" : "max-w-7xl")}
             >
               <Outlet />
             </motion.div>
